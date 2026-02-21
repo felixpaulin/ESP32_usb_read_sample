@@ -8,7 +8,9 @@ import time
 PORT = "COM5"
 BAUD = 9600
 
-commands = ["BIN_1", "BIN_2", "BIN_3"]
+commands = ["BIN_1"]
+#commands = ["BIN_1", "BIN_2", "BIN_3"]
+
 
 ser = serial.Serial(PORT, BAUD, timeout=1)
 time.sleep(2)  # allow ESP32 to reset after opening serial
