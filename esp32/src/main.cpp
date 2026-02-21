@@ -11,8 +11,8 @@ const int SERVO_PIN = 13;
 // avoid 0 and 180 to avoid hitting mechanical limits of the servo. Adjust as needed for your setup.
 const int IDLE_ANGLE = 10;     // 
 const int BIN_1_ANGLE = 30;    // Straight / default
-const int BIN_2_ANGLE = 90;   // Center
-const int BIN_3_ANGLE = 140;  // Right
+const int BIN_2_ANGLE = 110;   // Center
+const int BIN_3_ANGLE = 170;  // Right
 // ==================
 
 
@@ -55,7 +55,7 @@ void setup() {
   sorterServo.attach(SERVO_PIN, 500, 2400);
 
   // Start straight
-  sorterServo.write(BIN_1_ANGLE);
+  sorterServo.write(IDLE_ANGLE);
 
   Serial.println("ESP32 ready");
 }
