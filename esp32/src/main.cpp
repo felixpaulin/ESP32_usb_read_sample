@@ -12,7 +12,7 @@ const int SERVO_PIN = 13;
 const int IDLE_ANGLE = 10;     // 
 const int BIN_1_ANGLE = 30;    // Straight / default
 const int BIN_2_ANGLE = 110;   // Center
-const int BIN_3_ANGLE = 170;  // Right
+const int BIN_3_ANGLE = 155;  // Right
 // ==================
 
 
