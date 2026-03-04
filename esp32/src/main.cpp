@@ -83,8 +83,8 @@ void loop() {
     }
   }
 
-  // ===== AUTO RETURN AFTER 4s =====
-  if (waitingToReturn && millis() - moveTime >= 4000) {
+  // ===== AUTO RETURN AFTER 6s =====
+  if (waitingToReturn && millis() - moveTime >= 6000) {
     waitingToReturn = false;
     sorterServo.write(IDLE_ANGLE);
     lightLedAllOff();
