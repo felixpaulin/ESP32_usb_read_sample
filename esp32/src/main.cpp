@@ -42,9 +42,9 @@ void moveServoTo(int angle) {
   moveTime = millis();
   waitingToReturn = true;
 }
-
+// SET THIS BACK 9600 BAUD, 115200 FOR DEBUGGING
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(1000);
 
   pinMode(RED_LED, OUTPUT);
