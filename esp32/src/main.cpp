@@ -21,23 +21,6 @@ unsigned long moveTime = 0;
 bool waitingToReturn = false;
 
 
-// LED pins
-constexpr int RED_LED    = 25;
-constexpr int GREEN_LED  = 26;
-constexpr int YELLOW_LED = 27;
-
-void lightLedOn(int pin) {
-  digitalWrite(pin, HIGH);
-}
-
-
-void lightLedAllOff() {
-  digitalWrite(RED_LED, LOW);
-  digitalWrite(GREEN_LED, LOW);
-  digitalWrite(YELLOW_LED, LOW);
-}
-
-
 void moveServoTo(int angle) {
   sorterServo.write(angle);
   moveTime = millis();
@@ -48,9 +31,7 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
 
-  pinMode(RED_LED, OUTPUT);
-  pinMode(GREEN_LED, OUTPUT);
-  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(2, OUTPUT);
 
   sorterServo.setPeriodHertz(50);
   sorterServo.attach(SERVO_PIN, 500, 2400);
@@ -63,19 +44,21 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
+    // Blink debug LED once when data begins arriving
+    digitalWrite(2, HIGH);
+    delay(50);
+    digitalWrite(2, LOW);
+
     String cmd = Serial.readStringUntil('\n');
     cmd.trim();  // remove \r, spaces, etc.
 
     if (cmd == "BIN_1") {
-      lightLedOn(RED_LED);
       moveServoTo(BIN_1_ANGLE);
     } 
     else if (cmd == "BIN_2") {
-      lightLedOn(YELLOW_LED); 
       moveServoTo(BIN_2_ANGLE);
     } 
     else if (cmd == "BIN_3") {
-      lightLedOn(GREEN_LED);
       moveServoTo(BIN_3_ANGLE);
     } 
     else {
@@ -88,8 +71,7 @@ void loop() {
   if (waitingToReturn && millis() - moveTime >= 6000) {
     waitingToReturn = false;
     sorterServo.write(IDLE_ANGLE);
-    lightLedAllOff();
     Serial.println("Returned to idle angle");
-  }  
+  }
 }
 
