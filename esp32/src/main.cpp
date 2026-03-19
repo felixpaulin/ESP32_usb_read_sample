@@ -1,3 +1,4 @@
+#include <HardwareSerial.h>
 #include <Arduino.h>
 #include <ESP32Servo.h>
 
@@ -91,5 +92,4 @@ void loop() {
     Serial.println("Returned to idle angle");
   }  
 }
-
 
