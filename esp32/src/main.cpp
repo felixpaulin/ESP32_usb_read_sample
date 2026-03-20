@@ -31,8 +31,6 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
 
-  pinMode(2, OUTPUT);
-
   sorterServo.setPeriodHertz(50);
   sorterServo.attach(SERVO_PIN, 500, 2400);
 
@@ -44,11 +42,6 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    // Blink debug LED once when data begins arriving
-    digitalWrite(2, HIGH);
-    delay(50);
-    digitalWrite(2, LOW);
-
     String cmd = Serial.readStringUntil('\n');
     cmd.trim();  // remove \r, spaces, etc.
 
