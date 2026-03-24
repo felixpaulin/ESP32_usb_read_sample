@@ -6,7 +6,7 @@
 Servo sorterServo;
 
 // ===== CONFIG =====
-const int SERVO_PIN = 13;
+const int SERVO_PIN = 18;
 
 // Change these angles to match your conveyor layout
 // avoid 0 and 180 to avoid hitting mechanical limits of the servo. Adjust as needed for your setup.
