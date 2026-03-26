@@ -8,10 +8,9 @@ Servo sorterServo;
 // ===== CONFIG =====
 const int SERVO_PIN = 18;
 
-// Change these angles to match your conveyor layout
-// avoid 0 and 180 to avoid hitting mechanical limits of the servo. Adjust as needed for your setup.
+
 const int IDLE_ANGLE = 10;     // 
-const int BIN_1_ANGLE = 50;    // Straight / default
+const int BIN_1_ANGLE = 50;    // Diagonal
 const int BIN_2_ANGLE = 110;   // Center
 const int BIN_3_ANGLE = 155;  // Right
 // ==================
@@ -26,7 +25,7 @@ void moveServoTo(int angle) {
   moveTime = millis();
   waitingToReturn = true;
 }
-// SET THIS BACK 9600 BAUD, 115200 FOR DEBUGGING
+
 void setup() {
   Serial.begin(115200);
   delay(1000);
